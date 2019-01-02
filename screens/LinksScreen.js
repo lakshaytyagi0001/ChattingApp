@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -8,7 +8,9 @@ export default class LinksScreen extends React.Component {
 
   render() {
     return (
+      <View style={{paddingTop:20}}>
       <Text> Links Screen </Text>
+      </View>
     );
   }
 }
