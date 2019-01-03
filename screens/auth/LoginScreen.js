@@ -9,11 +9,7 @@ export default class LoginScreen extends React.Component {
     }
 
     render() {
-
-        return
-        (
-        <Text style={{paddingTop:20}}>Login Screen</Text>
-        );
+        return<Text>Login Screen</Text>
     }
 }
 

@@ -9,11 +9,7 @@ export default class ForgotPasswordScreen extends React.Component {
     }
 
     render() {
-
-        return
-        (
-        <Text style={{paddingTop:20}}>ForgotPassword Screen</Text>
-        );
+        return<Text>ForgotPassword Screen</Text>
     }
 }
 
