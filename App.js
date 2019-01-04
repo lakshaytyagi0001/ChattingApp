@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import MainTabNavigator from './navigation/MainTabNavigator';
 import ApiKeys from './constants/ApiKeys';
 import * as firebase from 'firebase';
 
@@ -11,13 +12,21 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isLoadingComplete: false,
+      isAuthenticationReady: false,
+      isAuthenticated: false,
     };
 
-    if (!firebase.app.length) {firebase.initializeApp(ApiKeys.FirebaseConfig);}
+    if (!firebase.apps.length) {firebase.initializeApp(ApiKeys.FirebaseConfig);}
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+  }
+
+  onAuthStateChanged = (user) => {
+    this.setState({isAuthenticationReady: true});
+    this.setState({isAuthenticated: !!user});
   }
 
   render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+    if (!this.state.isLoadingComplete && !this.isAuthenticationReady && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
           startAsync={this._loadResourcesAsync}
@@ -29,7 +38,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
+          {(this.state.isAuthenticated) ? <MainTabNavigator/> : <AppNavigator />}
         </View>
       );
     }
