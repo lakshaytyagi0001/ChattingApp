@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, Button} from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, Alert} from 'react-native';
+import * as firebase from 'firebase';
 
 export default class ForgotPasswordScreen extends React.Component {
     
@@ -8,6 +9,15 @@ export default class ForgotPasswordScreen extends React.Component {
         this.state = {
             email: "",
         };
+    }
+
+    onResetPasswordPress = () => {
+        firebase.auth().sendPasswordResetEmail(this.state.email)
+        .then(() => {
+            Alert.alert("Password Set Email has Been Sent.");
+        }, (error) => {
+            Alert.alert(error.message);
+        });
     }
 
     onBackToLoginPress = () => {
