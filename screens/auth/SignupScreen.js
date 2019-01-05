@@ -37,23 +37,43 @@ export default class SignupScreen extends React.Component {
             <View style={{paddingTop:50, alignItems:"center"}}>
 
             <Text> Signup Screen</Text>
+            <View style={{padding: 5}}/>
 
             <TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.email}
             onChangeText={(text) => { this.setState({email: text}) }}
+            placeholder=' Email'
+            keyboardType='email-address'
+            autoCapitalize='none'
+            autoCorrect={false}
             />
+
+             <View style={{padding: 10}}/>
 
             <TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.password}
             onChangeText={(text) => { this.setState({password: text}) }}
+            placeholder=' Password'
+            secureTextEntry={true}
+            autoCapitalize='none'
+            autoCorrect={false}
             />
+
+             <View style={{padding: 10}}/>
 
             <TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.passwordConfirm}
             onChangeText={(text) => { this.setState({passwordConfirm: text}) }}
+            placeholder=' Confirm Password'
+            secureTextEntry={true}
+            autoCapitalize='none'
+            autoCorrect={false}
             />
 
+             <View style={{padding: 10}}/>
+
             < Button title="Signup" onPress={this.onSignupPress} />
+            <View style={{padding: 5}}/>
             < Button title="Back To Login" onPress={this.onBackToLoginPress} />
 
             </View>

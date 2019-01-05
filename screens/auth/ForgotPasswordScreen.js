@@ -30,13 +30,21 @@ export default class ForgotPasswordScreen extends React.Component {
             <View style={{paddingTop:50, alignItems:"center"}}>
 
             <Text>Forgot Password</Text>
+            <View style={{padding: 5}}/>
 
             <TextInput style={{width: 200, height: 40, borderWidth: 1}}
             value={this.state.email}
             onChangeText={(text) => { this.setState({email: text}) }}
+            placeholder=' Email'
+            keyboardType='email-address'
+            autoCapitalize='none'
+            autoCorrect={false}
             />
 
+             <View style={{padding: 10}}/>
+
             < Button title="Reset Password" onPress={this.onResetPasswordPress} />
+            <View style={{padding: 5}}/>
             < Button title="Back To Login" onPress={this.onBackToLoginPress} />
             
             </View>
