@@ -13,7 +13,7 @@ export default class App extends React.Component {
     this.state = {
       isLoadingComplete: false,
       isAuthenticationReady: false,
-      isAuthenticated: false,
+      isAuthenticated: true,
     };
 
     if (!firebase.apps.length) {firebase.initializeApp(ApiKeys.FirebaseConfig);}
